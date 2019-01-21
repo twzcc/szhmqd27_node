@@ -1,5 +1,4 @@
 {{extend './parents.html'}}
-
 {{block 'content'}}
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -56,7 +55,6 @@
     // 搜索
     function search() {
         const keyword = $("#studentNameId").val()
-
         window.location.href = `/studentmanager/list?keyword=${keyword}`
     }
 </script>
