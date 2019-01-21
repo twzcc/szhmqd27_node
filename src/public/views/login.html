@@ -71,7 +71,7 @@
         //发送post请求
         $.post('/account/login',{username,password,vcode},function(result){
             //判断
-            if(ressult.status!=0){
+            if(result.status!=0){
                 alert(result.message)
                 //再发请求,重新加载验证码图片
                 $("#vcodeimgId").attr('src',`/account/vcode?vode=${Math.random()}`) 

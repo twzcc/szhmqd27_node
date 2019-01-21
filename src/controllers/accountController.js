@@ -81,7 +81,7 @@ exports.getVcodeImage = (req, res) => {
     p.color(80, 80, 80, 255); // Second color: paint (red, green, blue, alpha)
 
     var img = p.getBase64();
-    var imgbase64 = new Buffer(img, 'base64');
+    var imgbase64 = Buffer.from(img, "base64");
     res.writeHead(200, {
         'Content-Type': 'image/png'
     });
@@ -120,11 +120,11 @@ exports.login = (req, res) => {
         collection.findOne({
             username,
             password
-        }, (err, docs) => {
-            console.log(docs);
+        }, (err, doc) => {
+            console.log(doc);
 
             //如果result==null没用查询到 就可以插入 如果查询到了 说明用户已经存在
-            if (docs) {
+            if (!doc) {
                 //存在
                 result.status = 2;
                 result.message = "用户名或密码错误"
