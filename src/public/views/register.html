@@ -4,6 +4,8 @@
 <head>
     <title>欢迎注册</title>
     <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/md5.js"></script>
 </head>
 
 <body>
@@ -37,5 +39,32 @@
         </div>
     </div>
 </body>
+<script>
+function register(){
+    const username=$('#usernameId').val()
+    const password=$.md5($('#passwordId').val()+"@-432")
+    //参数1:url
+    //参数2:请求数据
+    //参数3:返回的数据  回调函数
+$.post('/account/register',{username,password},function(result){
+    if(result.status!=0){
+        //失败
+        alert(result.message)
+    }else{
+        //跳转到登录页
+        location.href="/account/login";
+    }
 
+})
+// $.ajax({
+//     type: "post",
+//     url: "/account/register",
+//     data: {username:username,password:password},
+//     success: function (result) {
+//         console.log(result)
+        
+//     }
+// });
+}
+</script>
 </html>
